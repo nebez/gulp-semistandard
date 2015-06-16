@@ -1,32 +1,35 @@
 {
-  "name": "gulp-standard",
-  "version": "0.0.3",
-  "description": "gulp plugin for checking JavaScript code with the standard syntax",
+  "name": "gulp-semistandard",
+  "version": "0.1.0",
+  "description": "gulp plugin to check JavaScript code against the semistandard coding style",
   "main": "index.js",
-  "keywords": [
-    "standard",
-    "gulpplugin"
-  ],
   "scripts": {
     "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/emgeee/gulp-standard"
+    "url": "git+https://github.com/nebez/gulp-semistandard.git"
   },
-  "author": "Matt Green <mgreen9@gmail.com> (http://emgeee.com/)",
+  "keywords": [
+    "javascript",
+    "semistandard",
+    "gulp",
+    "gulpplugin",
+    "gulpfriendly"
+  ],
+  "author": "Nebez Briefkani <me@nebezb.com> (http://nebezb.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/emgeee/gulp-standard/issues"
+    "url": "https://github.com/nebez/gulp-semistandard/issues"
   },
-  "homepage": "https://github.com/emgeee/gulp-standard",
+  "homepage": "https://github.com/nebez/gulp-semistandard#readme",
   "dependencies": {
     "app-root-path": "^1.0.0",
     "colors": "^1.0.3",
     "gulp-util": "^3.0.4",
     "log-symbols": "^1.0.2",
     "path": "^0.11.14",
-    "standard": "^3.9.0",
+    "semistandard": "^6.0.0",
     "through2": "^0.6.3"
   },
   "devDependencies": {
