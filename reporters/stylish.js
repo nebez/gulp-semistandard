@@ -25,40 +25,33 @@ function Stylish (options) {
     var lines = [];
 
     // Filename
-    lines.push(colors.magenta.underline(path.relative(appRoot.path, filepath)));
+    lines.push(colors.white.bold.underline(path.relative(appRoot.path, filepath)));
 
     // Loop file specific error/warning messages
     data.results.forEach(function (file) {
       file.messages.forEach(function (msg) {
-        var line = colors.yellow('line ' + msg.line + ':' + msg.column) + '\t' + colors.cyan(msg.message);
+        var line = colors.grey('  line ' + msg.line + '  col ' + msg.column) + '\t  ' + colors.cyan(msg.message);
         lines.push(line);
       });
     });
 
     // Error/Warning count
-    lines.push(logSymbols.error + ' ' + colors.red(data.errorCount + ' error' + (data.errorCount === 1 ? 's' : '')) + '\t' + logSymbols.warning + ' ' + colors.yellow(data.warningCount + ' warning' + (data.errorCount === 1 ? 's' : '')));
+    lines.push('');
+    lines.push('  ' + logSymbols.error + ' ' + colors.red(data.errorCount + ' error' + (data.errorCount !== 1 ? 's' : '')));
+    lines.push('  ' + logSymbols.warning + ' ' + colors.yellow(data.warningCount + ' warning' + (data.warningCount !== 1 ? 's' : '')));
 
     return lines.join('\n') + '\n';
-  }
-
-  // Reporter header
-  function reportHeader () {
-    console.log(colors.green('Standard linter results'));
-    console.log('======================================\n');
   }
 
   // Reporter footer
   function reportFooter () {
     if (totalErrorCount === 0 && totalWarningCount === 0) {
-      console.log(logSymbols.success + ' ' + colors.green('All OK!'));
+      // Success!
     } else {
-      console.log('======================================');
-      console.log(logSymbols.error + colors.red(' Errors total: ' + totalErrorCount));
-      console.log(logSymbols.warning + colors.yellow(' Warnings total: ' + totalWarningCount) + '\n');
+      console.log(logSymbols.error + colors.red(' ' + totalErrorCount + ' errors'));
+      console.log(logSymbols.warning + colors.yellow(' ' + totalWarningCount + ' warnings') + '\n');
     }
   }
-
-  reportHeader();
 
   return through2.obj(function (file, enc, cb) {
     if (file.isNull()) {
