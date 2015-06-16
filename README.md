@@ -1,18 +1,18 @@
-#gulp-standard
-[![Build Status](https://travis-ci.org/emgeee/gulp-standard.png?branch=master)](https://travis-ci.org/emgeee/gulp-standard)
-[![NPM version](https://badge.fury.io/js/gulp-standard.png)](http://badge.fury.io/js/gulp-standard)
+#gulp-semistandard
+[![Build Status](https://travis-ci.org/nebez/gulp-semistandard.svg)](https://travis-ci.org/nebez/gulp-semistandard)
+[![NPM version](https://badge.fury.io/js/gulp-semistandard.png)](http://badge.fury.io/js/gulp-semistandard)
 
-> [Standard](https://github.com/feross/standard/) linter for gulp
+> [Semi-Standard](https://github.com/Flet/semistandard/) linter for gulp
 
 ## Information
 
 <table>
 <tr>
-<td>Package</td><td>gulp-standard</td>
+<td>Package</td><td>gulp-semistandard</td>
 </tr>
 <tr>
 <td>Description</td>
-<td>Standard plugin for gulp</td>
+<td>Check JavaScript code against the semistandard coding style</td>
 </tr>
 <tr>
 <td>Node version</td>
@@ -29,7 +29,7 @@
 #### Install
 
 ```sh
-$ npm install --save-dev gulp-standard
+$ npm install --save-dev gulp-semistandard
 ```
 
 ## Examples
@@ -37,12 +37,12 @@ $ npm install --save-dev gulp-standard
 ```javascript
 // include the required packages.
 var gulp = require('gulp'),
-  standard = require('gulp-standard')
+  semistandard = require('gulp-semistandard')
 
-gulp.task('standard', function () {
+gulp.task('semistandard', function () {
   return gulp.src(['./app.js'])
-    .pipe(standard())
-    .pipe(standard.reporter('default', {
+    .pipe(semistandard())
+    .pipe(semistandard.reporter('default', {
       breakOnError: true
     }))
 })
@@ -55,8 +55,8 @@ gulp.task('standard', function () {
 You can choose a reporter when you call
 ````javascript
 stuff
-  .pipe(standard())
-  .pipe(standard.reporter('default', opts))
+  .pipe(semistandard())
+  .pipe(semistandard.reporter('default', opts))
 External
 ````
 
@@ -65,14 +65,14 @@ You can also use some other custom made reporter
 var reporter = require(<SOME_REPORTER>);
 
 stuff
-  .pipe(standard())
-  .pipe(standard.reporter(reporter, opts))
+  .pipe(semistandard())
+  .pipe(semistandard.reporter(reporter, opts))
 ````
-OR - 
+OR -
 ````javascript
 stuff
-  .pipe(standard())
-  .pipe(standard.reporter(<REPORTER NAME>, opts))
+  .pipe(semistandard())
+  .pipe(semistandard.reporter(<REPORTER NAME>, opts))
 ````
 #### Reporter options
 
