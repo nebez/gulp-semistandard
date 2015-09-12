@@ -1,6 +1,7 @@
 #gulp-semistandard
 [![Build Status](https://travis-ci.org/nebez/gulp-semistandard.svg)](https://travis-ci.org/nebez/gulp-semistandard)
 [![NPM version](https://badge.fury.io/js/gulp-semistandard.png)](http://badge.fury.io/js/gulp-semistandard)
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
 
 > [Semi-Standard](https://github.com/Flet/semistandard/) linter for gulp
 
