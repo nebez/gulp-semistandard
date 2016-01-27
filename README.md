@@ -91,5 +91,11 @@ Default: `false`
 
 Emit gulp error on reported warning
 
+##### prefixLogs
+
+Type: `boolean`
+Default: `false`
+
+Prefix log messages with the plugin name
 
 ## LICENSE [MIT](LICENSE)
