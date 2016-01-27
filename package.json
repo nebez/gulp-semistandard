@@ -1,11 +1,11 @@
 {
   "name": "gulp-semistandard",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "gulp plugin to check JavaScript code against the semistandard coding style",
   "main": "index.js",
   "scripts": {
     "lint": "semistandard",
-    "test":" npm run lint && mocha"
+    "test": " npm run lint && mocha"
   },
   "repository": {
     "type": "git",
