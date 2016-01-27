@@ -12,13 +12,16 @@ function Stylish (options) {
   // Default options
   var opts = {
     breakOnError: false,
-    breakOnWarning: false
+    breakOnWarning: false,
+    prefixLogs: false
   };
   var totalErrorCount = 0;
   var totalWarningCount = 0;
 
   // Extend and override default options with the ones user has set
   for (var attr in options) { opts[attr] = options[attr]; }
+
+  var logPrefix = options.prefixLogs ? colors.cyan('[' + PLUGIN_NAME + '] ') : '';
 
   // File specific reporter
   function reportFile (filepath, data) {
@@ -40,6 +43,9 @@ function Stylish (options) {
     lines.push('  ' + logSymbols.error + ' ' + colors.red(data.errorCount + ' error' + (data.errorCount !== 1 ? 's' : '')));
     lines.push('  ' + logSymbols.warning + ' ' + colors.yellow(data.warningCount + ' warning' + (data.warningCount !== 1 ? 's' : '')));
 
+    // Prefix lines with plugin name for clearer logs
+    lines = lines.map(function (line) { return logPrefix + line; });
+
     return lines.join('\n') + '\n';
   }
 
@@ -48,8 +54,8 @@ function Stylish (options) {
     if (totalErrorCount === 0 && totalWarningCount === 0) {
       // Success!
     } else {
-      console.log(logSymbols.error + colors.red(' ' + totalErrorCount + ' errors'));
-      console.log(logSymbols.warning + colors.yellow(' ' + totalWarningCount + ' warnings') + '\n');
+      console.log(logPrefix + logSymbols.error + colors.red(' ' + totalErrorCount + ' errors'));
+      console.log(logPrefix + logSymbols.warning + colors.yellow(' ' + totalWarningCount + ' warnings') + '\n');
     }
   }
 
