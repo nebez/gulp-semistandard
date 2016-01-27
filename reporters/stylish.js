@@ -21,7 +21,7 @@ function Stylish (options) {
   // Extend and override default options with the ones user has set
   for (var attr in options) { opts[attr] = options[attr]; }
 
-  var logPrefix = options.prefixLogs ? colors.cyan('[' + PLUGIN_NAME + '] ') : '';
+  var logPrefix = options.prefixLogs ? colors.cyan('[' + PLUGIN_NAME + ']\t') : '';
 
   // File specific reporter
   function reportFile (filepath, data) {
