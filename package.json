@@ -1,6 +1,6 @@
 {
   "name": "gulp-semistandard",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "gulp plugin to check JavaScript code against the semistandard coding style",
   "main": "index.js",
   "scripts": {
