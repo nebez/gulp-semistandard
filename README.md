@@ -37,16 +37,17 @@ $ npm install --save-dev gulp-semistandard
 
 ```javascript
 // include the required packages.
-var gulp = require('gulp'),
-  semistandard = require('gulp-semistandard')
+var gulp = require('gulp');
+var semistandard = require('gulp-semistandard');
 
 gulp.task('semistandard', function () {
   return gulp.src(['./app.js'])
     .pipe(semistandard())
     .pipe(semistandard.reporter('default', {
-      breakOnError: true
-    }))
-})
+      breakOnError: true,
+      quiet: true
+    }));
+});
 ```
 
 ## Reporters
@@ -63,7 +64,7 @@ External
 
 You can also use some other custom made reporter
 ````javascript
-var reporter = require(<SOME_REPORTER>);
+var reporter = require(<SOME_REPORTER>)
 
 stuff
   .pipe(semistandard())
@@ -97,5 +98,12 @@ Type: `boolean`
 Default: `false`
 
 Prefix log messages with the plugin name
+
+##### quiet
+Type: `boolean`
+Default: `false`
+
+Suppress success messages, only show errors
+
 
 ## LICENSE [MIT](LICENSE)

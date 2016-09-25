@@ -6,7 +6,7 @@ var gutil = require('gulp-util');
 var PLUGIN_NAME = require('./package.json').name;
 var defaultReporter = require('./reporters/stylish');
 
-function gulpStandard (opts) {
+function gulpSemiStandard (opts) {
   opts = opts || {};
 
   function processFile (file, enc, cb) {
@@ -15,8 +15,7 @@ function gulpStandard (opts) {
     }
 
     if (file.isStream()) {
-      this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streams are not supported!'));
-      return cb();
+      return cb(new gutil.PluginError(PLUGIN_NAME, 'Streams are not supported!'));
     }
 
     semistandard.lintText(String(file.contents), opts, function (err, data) {
@@ -31,7 +30,7 @@ function gulpStandard (opts) {
   return through2.obj(processFile);
 }
 
-gulpStandard.reporter = function (reporter, opts) {
+gulpSemiStandard.reporter = function (reporter, opts) {
   // Load default reporter
   if (reporter === 'default') return defaultReporter(opts);
 
@@ -53,4 +52,4 @@ gulpStandard.reporter = function (reporter, opts) {
   }
 };
 
-module.exports = gulpStandard;
+module.exports = gulpSemiStandard;

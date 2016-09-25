@@ -13,7 +13,8 @@ function Stylish (options) {
   var opts = {
     breakOnError: false,
     breakOnWarning: false,
-    prefixLogs: false
+    prefixLogs: false,
+    quiet: false
   };
   var totalErrorCount = 0;
   var totalWarningCount = 0;
@@ -53,10 +54,10 @@ function Stylish (options) {
   function reportFooter () {
     if (totalErrorCount === 0 && totalWarningCount === 0) {
       // Success!
-    } else {
-      console.log(logPrefix + logSymbols.error + colors.red(' ' + totalErrorCount + ' errors'));
-      console.log(logPrefix + logSymbols.warning + colors.yellow(' ' + totalWarningCount + ' warnings') + '\n');
+      if (options.quiet) return;
     }
+    console.log(logPrefix + logSymbols.error + colors.red(' ' + totalErrorCount + ' errors'));
+    console.log(logPrefix + logSymbols.warning + colors.yellow(' ' + totalWarningCount + ' warnings') + '\n');
   }
 
   return through2.obj(function (file, enc, cb) {
@@ -65,8 +66,7 @@ function Stylish (options) {
     }
 
     if (file.isStream()) {
-      this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streams are not supported!'));
-      return cb();
+      return cb(new gutil.PluginError(PLUGIN_NAME, 'Streams are not supported!'));
     }
 
     // Report file specific stuff only when there are some errors/warnings
@@ -86,7 +86,7 @@ function Stylish (options) {
       if (totalErrorCount && options.breakOnError) {
         this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Linter errors occurred!'));
       }
-      if (totalErrorCount && options.breakOnWarning) {
+      if (totalWarningCount && options.breakOnWarning) {
         this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Linter warnings occurred!'));
       }
     });
