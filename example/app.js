@@ -1,15 +1,15 @@
-var test = 'test'
+var test = 'test';
 
 function App () {
-  return new View(test)
+  return new View(test);
 }
 
 function View () {
   return {
     render: function (state) {
-      return state
+      return state;
     }
-  }
+  };
 }
 
-module.exports = new App()
+module.exports = new App();

@@ -37,17 +37,17 @@ $ npm install --save-dev gulp-semistandard
 
 ```javascript
 // include the required packages.
-var gulp = require('gulp'),
-  semistandard = require('gulp-semistandard')
+var gulp = require('gulp');
+var semistandard = require('gulp-semistandard');
 
 gulp.task('semistandard', function () {
   return gulp.src(['./app.js'])
     .pipe(semistandard())
     .pipe(semistandard.reporter('default', {
-      breakOnError: true
+      breakOnError: true,
       quiet: true
-    }))
-})
+    }));
+});
 ```
 
 ## Reporters
