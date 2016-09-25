@@ -30,13 +30,13 @@
   },
   "homepage": "https://github.com/nebez/gulp-semistandard#readme",
   "dependencies": {
-    "app-root-path": "^1.0.0",
+    "app-root-path": "^2.0.1",
     "colors": "^1.1.2",
-    "gulp-util": "^3.0.6",
+    "gulp-util": "^3.0.7",
     "log-symbols": "^1.0.2",
-    "semistandard": "^7.0.2",
+    "semistandard": "^9.0.0",
     "path": "^0.12.7",
-    "through2": "^2.0.0"
+    "through2": "^2.0.1"
   },
   "devDependencies": {
     "mocha": "^3.0.2",
